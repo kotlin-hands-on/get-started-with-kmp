@@ -1,4 +1,4 @@
-package com.jetbrains.simplelogin.kotlinmultiplatformsandbox.android
+package com.jetbrains.simplelogin.kotlinmultiplatformsandbox
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.shape.RoundedCornerShape

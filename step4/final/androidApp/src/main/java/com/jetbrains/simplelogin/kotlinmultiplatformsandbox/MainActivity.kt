@@ -1,4 +1,4 @@
-package com.jetbrains.simplelogin.kotlinmultiplatformsandbox.android
+package com.jetbrains.simplelogin.kotlinmultiplatformsandbox
 
 import Greeting
 import android.os.Bundle

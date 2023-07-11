@@ -1,4 +1,4 @@
-package com.jetbrains.simplelogin.kotlinmultiplatformsandbox.android
+package com.jetbrains.simplelogin.kotlinmultiplatformsandbox
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
