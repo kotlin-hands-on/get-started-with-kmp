@@ -4,10 +4,10 @@ plugins {
 }
 
 android {
-    namespace = "com.jetbrains.simplelogin.kotlinmultiplatformsandbox.android"
+    namespace = "com.jetbrains.simplelogin.kotlinmultiplatformsandbox"
     compileSdk = 33
     defaultConfig {
-        applicationId = "com.jetbrains.simplelogin.kotlinmultiplatformsandbox.android"
+        applicationId = "com.jetbrains.simplelogin.kotlinmultiplatformsandbox"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
