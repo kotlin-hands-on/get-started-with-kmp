@@ -7,6 +7,9 @@ import io.ktor.client.call.body
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.request.get
 import io.ktor.serialization.kotlinx.json.*
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import kotlinx.serialization.json.Json
 
 class Greeting {
@@ -23,12 +26,21 @@ class Greeting {
     }
 
     @Throws(Exception::class)
-    suspend fun greet(): String {
+    fun greet(): Flow<List<String>> = flow {
+        val greetingMessages: MutableList<String> =
+            mutableListOf("Guess what it is! > ${platform.name.reversed()}!")
+        greetingMessages.add("There are only ${daysUntilNewYear()} left until New Year! 🎆")
         val rockets: List<RocketLaunch> =
             httpClient.get("https://api.spacexdata.com/v4/launches").body()
         val lastSuccessLaunch = rockets.last { it.launchSuccess == true }
-        return "Guess what it is! > ${platform.name.reversed()}!" +
-                "\nThere are only ${daysUntilNewYear()} left until New Year! 🎆" +
-                "\nThe last successful launch was ${lastSuccessLaunch.launchDateUTC} 🚀"
+        greetingMessages.add("The last successful launch was ${lastSuccessLaunch.launchDateUTC} 🚀")
+        for (i in 0.. greetingMessages.size) {
+            // Make a progressive list and delay between each list emission
+            val subList = greetingMessages.subList(0, i)
+            emit(subList)
+            if (i < greetingMessages.size) {
+                delay(1000)
+            }
+        }
     }
 }
