@@ -7,54 +7,44 @@ struct ContentView: View {
     @ObservedObject private(set) var viewModel: ViewModel
 
     var body: some View {
-        NavigationView {
-            listView()
-            .onAppear{self.viewModel.startObserving()}
-        }
+        ListView(phrases: viewModel.greetings)
+            .onAppear { self.viewModel.startObserving() }
     }
-
-    private func listView() -> AnyView {
-        switch viewModel.greetings {
-        case .loading:
-            return AnyView(Text("Loading...").multilineTextAlignment(.center))
-        case .result(let greetingMessages):
-            return AnyView(VStack {
-                List {
-                    ForEach(greetingMessages, id: \.self) { greeting in
-                        Text(greeting)
-                    }
-                }
-            })
-        case .error(let description):
-            return AnyView(Text(description).multilineTextAlignment(.center))
-        }
-    }
-
 }
 
 extension ContentView {
-    enum LoadableMessages {
-        case loading
-        case result([String])
-        case error(String)
-    }
-    
     @MainActor
     class ViewModel: ObservableObject {
-        @Published var greetings = LoadableMessages.loading
+        @Published var greetings: Array<String> = []
         
         func startObserving() {
             Task {
-                do {
-                    let stream = asyncStream(for: Greeting().greetNative())
-                    for try await data in stream {
-                        self.greetings = .result(data)
-                    }
-                } catch {
-                    print("Failed with error: \(error)")
-                    self.greetings = .error("Error")
-                }
-            }
+               do {
+                   let sequence = asyncSequence(for: Greeting().greet())
+                   for try await phrase in sequence {
+                       self.greetings.append(phrase)
+                   }
+               } catch {
+                   print("Failed with error: \(error)")
+               }
+           }
         }
+    }
+}
+
+struct ListView: View {
+    let phrases: Array<String>
+
+    var body: some View {
+        List(phrases, id: \.self) {
+            Text($0)
+        }
+    }
+}
+
+
+struct ListView_Previews: PreviewProvider {
+    static var previews: some View {
+        ListView(phrases: ["Hello"])
     }
 }

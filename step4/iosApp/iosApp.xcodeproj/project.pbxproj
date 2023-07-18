@@ -10,8 +10,8 @@
 		058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557BA273AAA24004C7B11 /* Assets.xcassets */; };
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
-		66CD08D82A5ED96100D66EFD /* KMPNativeCoroutinesAsync in Frameworks */ = {isa = PBXBuildFile; productRef = 66CD08D72A5ED96100D66EFD /* KMPNativeCoroutinesAsync */; };
-		66CD08DA2A5ED96100D66EFD /* KMPNativeCoroutinesCore in Frameworks */ = {isa = PBXBuildFile; productRef = 66CD08D92A5ED96100D66EFD /* KMPNativeCoroutinesCore */; };
+		66CD08E22A66C3F600D66EFD /* KMPNativeCoroutinesAsync in Frameworks */ = {isa = PBXBuildFile; productRef = 66CD08E12A66C3F600D66EFD /* KMPNativeCoroutinesAsync */; };
+		66CD08E42A66C3F600D66EFD /* KMPNativeCoroutinesCore in Frameworks */ = {isa = PBXBuildFile; productRef = 66CD08E32A66C3F600D66EFD /* KMPNativeCoroutinesCore */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,8 +42,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66CD08DA2A5ED96100D66EFD /* KMPNativeCoroutinesCore in Frameworks */,
-				66CD08D82A5ED96100D66EFD /* KMPNativeCoroutinesAsync in Frameworks */,
+				66CD08E42A66C3F600D66EFD /* KMPNativeCoroutinesCore in Frameworks */,
+				66CD08E22A66C3F600D66EFD /* KMPNativeCoroutinesAsync in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,8 +113,8 @@
 			);
 			name = iosApp;
 			packageProductDependencies = (
-				66CD08D72A5ED96100D66EFD /* KMPNativeCoroutinesAsync */,
-				66CD08D92A5ED96100D66EFD /* KMPNativeCoroutinesCore */,
+				66CD08E12A66C3F600D66EFD /* KMPNativeCoroutinesAsync */,
+				66CD08E32A66C3F600D66EFD /* KMPNativeCoroutinesCore */,
 			);
 			productName = iosApp;
 			productReference = 7555FF7B242A565900829871 /* iosApp.app */;
@@ -145,7 +145,7 @@
 			);
 			mainGroup = 7555FF72242A565900829871;
 			packageReferences = (
-				66CD08D62A5ED96100D66EFD /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */,
+				66CD08E02A66C3F600D66EFD /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */,
 			);
 			productRefGroup = 7555FF7C242A565900829871 /* Products */;
 			projectDirPath = "";
@@ -397,25 +397,25 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		66CD08D62A5ED96100D66EFD /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */ = {
+		66CD08E02A66C3F600D66EFD /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rickclephas/KMP-NativeCoroutines.git";
 			requirement = {
-				kind = exactVersion;
-				version = 0.13.2;
+				branch = master;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		66CD08D72A5ED96100D66EFD /* KMPNativeCoroutinesAsync */ = {
+		66CD08E12A66C3F600D66EFD /* KMPNativeCoroutinesAsync */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 66CD08D62A5ED96100D66EFD /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */;
+			package = 66CD08E02A66C3F600D66EFD /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */;
 			productName = KMPNativeCoroutinesAsync;
 		};
-		66CD08D92A5ED96100D66EFD /* KMPNativeCoroutinesCore */ = {
+		66CD08E32A66C3F600D66EFD /* KMPNativeCoroutinesCore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 66CD08D62A5ED96100D66EFD /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */;
+			package = 66CD08E02A66C3F600D66EFD /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */;
 			productName = KMPNativeCoroutinesCore;
 		};
 /* End XCSwiftPackageProductDependency section */
