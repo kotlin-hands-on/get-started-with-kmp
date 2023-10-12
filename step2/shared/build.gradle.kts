@@ -38,8 +38,8 @@ kotlin {
 
 android {
     namespace = "com.jetbrains.simplelogin.kotlinmultiplatformsandbox"
-    compileSdk = 33
+    compileSdk = 34
     defaultConfig {
-        minSdk = 24
+        minSdk = 26
     }
 }
