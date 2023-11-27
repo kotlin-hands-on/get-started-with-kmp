@@ -1,7 +1,0 @@
-version: "Apple Swift version 5.8.1 (swiftlang-5.8.0.124.5 clang-1403.0.22.11.100)"
-options: "1d3d5a35a626aa1e4c84a8143635b24681d545c430e6cf27609d8f0c2bf92b87"
-build_start_time: [1689066658, 618024000]
-build_end_time: [1689066661, 387470000]
-inputs:
-  "/Users/pamelahill/fleet/get-started-with-kmp/step2/final/iosApp/iosApp/ContentView.swift": [1689066494, 14856200]
-  "/Users/pamelahill/fleet/get-started-with-kmp/step2/final/iosApp/iosApp/iOSApp.swift": [1689066494, 23444003]

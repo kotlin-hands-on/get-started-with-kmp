@@ -3,11 +3,8 @@ plugins {
     id("com.android.library")
 }
 
-@OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
-    targetHierarchy.default()
-
-    android {
+    androidTarget {
         compilations.all {
             kotlinOptions {
                 jvmTarget = "1.8"
@@ -26,12 +23,12 @@ kotlin {
     }
 
     sourceSets {
-        val commonMain by getting {
+        commonMain {
             dependencies {
                 //put your multiplatform dependencies here
             }
         }
-        val commonTest by getting {
+        commonTest {
             dependencies {
                 implementation(kotlin("test"))
             }
@@ -41,8 +38,8 @@ kotlin {
 
 android {
     namespace = "com.jetbrains.simplelogin.kotlinmultiplatformsandbox"
-    compileSdk = 33
+    compileSdk = 34
     defaultConfig {
-        minSdk = 24
+        minSdk = 26
     }
 }
