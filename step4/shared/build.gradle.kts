@@ -1,9 +1,8 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
-    kotlin("plugin.serialization") version "1.9.20-Beta2"
-    id("com.google.devtools.ksp")
-    id("com.rickclephas.kmp.nativecoroutines")
+    kotlin("plugin.serialization") version "1.9.20"
+    id("co.touchlab.skie") version "0.5.2"
 }
 
 kotlin {
