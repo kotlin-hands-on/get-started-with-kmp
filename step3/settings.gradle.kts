@@ -1,3 +1,4 @@
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 pluginManagement {
     repositories {
         google()
@@ -10,10 +11,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven("https://androidx.dev/storage/compose-compiler/repository/")
     }
 }
 
-rootProject.name = "KotlinMultiplatformSandbox"
+rootProject.name = "Kotlin_Multiplatform_Sandbox"
 include(":androidApp")
 include(":shared")

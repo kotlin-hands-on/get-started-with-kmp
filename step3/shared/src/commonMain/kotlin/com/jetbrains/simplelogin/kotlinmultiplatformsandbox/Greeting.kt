@@ -1,10 +1,12 @@
 package com.jetbrains.simplelogin.kotlinmultiplatformsandbox
 
+import kotlin.random.Random
+
 class Greeting {
     private val platform: Platform = getPlatform()
 
-    fun greet(): String {
-        return "Guess what it is! > ${platform.name.reversed()}!" +
-                "\nThere are only ${daysUntilNewYear()} days left until New Year! 🎆"
+    fun greet(): List<String> = buildList {
+        add(if (Random.nextBoolean()) "Hi!" else "Hello!")
+        add("Guess what this is! > ${platform.name.reversed()}!")
     }
 }
