@@ -1,20 +1,17 @@
 plugins {
-    kotlin("multiplatform")
-    id("com.android.library")
-    kotlin("plugin.serialization") version "1.9.20-Beta2"
-    id("com.google.devtools.ksp")
-    id("com.rickclephas.kmp.nativecoroutines")
+    alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.androidLibrary)
 }
 
 kotlin {
     androidTarget {
         compilations.all {
             kotlinOptions {
-                jvmTarget = "17"
+                jvmTarget = "1.8"
             }
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -22,40 +19,16 @@ kotlin {
     ).forEach {
         it.binaries.framework {
             baseName = "shared"
+            isStatic = true
         }
     }
 
-    val ktorVersion = "2.3.5"
-
     sourceSets {
-        all {
-            languageSettings.optIn("kotlin.experimental.ExperimentalObjCName")
+        commonMain.dependencies {
+            implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
         }
-
-        commonMain {
-            dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.1")
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
-
-                implementation("io.ktor:ktor-client-core:$ktorVersion")
-                implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
-                implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
-            }
-        }
-        commonTest {
-            dependencies {
-                implementation(kotlin("test"))
-            }
-        }
-        androidMain {
-            dependencies {
-                implementation("io.ktor:ktor-client-android:$ktorVersion")
-            }
-        }
-        iosMain {
-            dependencies {
-                implementation("io.ktor:ktor-client-darwin:$ktorVersion")
-            }
+        commonTest.dependencies {
+            implementation(libs.kotlin.test)
         }
     }
 }
@@ -64,10 +37,6 @@ android {
     namespace = "com.jetbrains.simplelogin.kotlinmultiplatformsandbox"
     compileSdk = 34
     defaultConfig {
-        minSdk = 26
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        minSdk = 24
     }
 }
