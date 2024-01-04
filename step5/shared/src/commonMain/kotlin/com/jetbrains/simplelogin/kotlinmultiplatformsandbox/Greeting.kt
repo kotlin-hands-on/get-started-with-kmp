@@ -15,7 +15,7 @@ class Greeting {
     fun greet(): Flow<String> = flow {
         emit(if (Random.nextBoolean()) "Hi!" else "Hello!")
         delay(1.seconds)
-        emit("Guess what it is! > ${platform.name.reversed()}")
+        emit("Guess what this is! > ${platform.name.reversed()}")
         delay(1.seconds)
         emit(daysPhrase())
         emit(rocketComponent.launchPhrase())
