@@ -1,5 +1,5 @@
 import SwiftUI
-import shared
+import Shared
 import KMPNativeCoroutinesAsync
 import KMPNativeCoroutinesCore
 
@@ -15,19 +15,19 @@ struct ContentView: View {
 extension ContentView {
     @MainActor
     class ViewModel: ObservableObject {
-        @Published var greetings: Array<String> = []
-        
+    @Published var greetings: Array<String> = []
+
         func startObserving() {
             Task {
-               do {
-                   let sequence = asyncSequence(for: Greeting().greet())
-                   for try await phrase in sequence {
-                       self.greetings.append(phrase)
-                   }
-               } catch {
-                   print("Failed with error: \(error)")
-               }
-           }
+                do {
+                    let sequence = asyncSequence(for: Greeting().greet())
+                    for try await phrase in sequence {
+                        self.greetings.append(phrase)
+                    }
+                } catch {
+                    print("Failed with error: \(error)")
+                }
+            }
         }
     }
 }
@@ -39,12 +39,5 @@ struct ListView: View {
         List(phrases, id: \.self) {
             Text($0)
         }
-    }
-}
-
-
-struct ListView_Previews: PreviewProvider {
-    static var previews: some View {
-        ListView(phrases: ["Hello"])
     }
 }

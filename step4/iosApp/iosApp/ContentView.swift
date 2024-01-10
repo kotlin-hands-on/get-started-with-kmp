@@ -1,5 +1,5 @@
 import SwiftUI
-import shared
+import Shared
 
 struct ContentView: View {
     let phrases = Greeting().greet()
@@ -12,7 +12,7 @@ struct ContentView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
-	static var previews: some View {
-		ContentView()
-	}
+    static var previews: some View {
+        ContentView()
+    }
 }
