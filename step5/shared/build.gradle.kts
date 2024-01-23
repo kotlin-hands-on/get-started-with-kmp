@@ -1,7 +1,8 @@
+
 plugins {
-    kotlin("multiplatform")
-    id("com.android.library")
-    kotlin("plugin.serialization")
+    alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.androidLibrary)
+    kotlin("plugin.serialization") version "1.9.22"
     id("com.google.devtools.ksp")
     id("com.rickclephas.kmp.nativecoroutines")
 }
@@ -19,49 +20,41 @@ kotlin {
         iosX64(),
         iosArm64(),
         iosSimulatorArm64()
-    ).forEach {
-        it.binaries.framework {
-            baseName = "shared"
+    ).forEach { iosTarget ->
+        iosTarget.binaries.framework {
+            baseName = "Shared"
+            isStatic = true
         }
     }
 
+    val ktorVersion = "2.3.7"
+    
     sourceSets {
+
         all {
             languageSettings.optIn("kotlin.experimental.ExperimentalObjCName")
         }
 
-        commonMain {
-            dependencies {
-                implementation(libs.kotlinx.datetime)
-                implementation(libs.kotlinx.coroutines.core)
-
-                implementation(libs.ktor.client.core)
-                implementation(libs.ktor.client.content.negotiation)
-                implementation(libs.ktor.serialization.kotlinx.json)
-            }
+        commonMain.dependencies {
+            implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
+            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+            implementation("io.ktor:ktor-client-core:$ktorVersion")
+            implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
+            implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
         }
-        commonTest {
-            dependencies {
-                implementation(kotlin("test"))
-            }
+        androidMain.dependencies {
+            implementation("io.ktor:ktor-client-android:$ktorVersion")
         }
-        androidMain {
-            dependencies {
-                implementation(libs.ktor.client.android)
-            }
-        }
-        iosMain {
-            dependencies {
-                implementation(libs.ktor.client.darwin)
-            }
+        iosMain.dependencies {
+            implementation("io.ktor:ktor-client-darwin:$ktorVersion")
         }
     }
 }
 
 android {
-    namespace = "com.jetbrains.simplelogin.kotlinmultiplatformsandbox"
-    compileSdk = 34
+    namespace = "com.jetbrains.greeting.shared"
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
     defaultConfig {
-        minSdk = 24
+        minSdk = libs.versions.android.minSdk.get().toInt()
     }
 }

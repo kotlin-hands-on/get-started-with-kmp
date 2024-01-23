@@ -1,6 +1,9 @@
+rootProject.name = "GreetingKMP"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 pluginManagement {
     repositories {
+        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
         google()
         gradlePluginPortal()
         mavenCentral()
@@ -11,9 +14,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
     }
 }
 
-rootProject.name = "Kotlin_Multiplatform_Sandbox"
-include(":androidApp")
+include(":composeApp")
 include(":shared")

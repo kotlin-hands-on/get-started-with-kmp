@@ -1,3 +1,4 @@
+
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
@@ -11,32 +12,31 @@ kotlin {
             }
         }
     }
-
+    
     listOf(
         iosX64(),
         iosArm64(),
         iosSimulatorArm64()
-    ).forEach {
-        it.binaries.framework {
-            baseName = "shared"
+    ).forEach { iosTarget ->
+        iosTarget.binaries.framework {
+            baseName = "Shared"
             isStatic = true
         }
     }
 
-    sourceSets {
-        commonMain.dependencies {
-            implementation(libs.kotlinx.datetime)
-        }
-        commonTest.dependencies {
-            implementation(libs.kotlin.test)
+    kotlin {
+        sourceSets {
+            commonMain.dependencies {
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
+            }
         }
     }
 }
 
 android {
-    namespace = "com.jetbrains.simplelogin.kotlinmultiplatformsandbox"
-    compileSdk = 34
+    namespace = "com.jetbrains.greeting.shared"
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
     defaultConfig {
-        minSdk = 24
+        minSdk = libs.versions.android.minSdk.get().toInt()
     }
 }
