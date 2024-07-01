@@ -1,18 +1,19 @@
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
-    kotlin("plugin.serialization") version "1.9.22"
-    id("com.google.devtools.ksp")
-    id("com.rickclephas.kmp.nativecoroutines")
+    alias(libs.plugins.kotlinSerialization)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.kmpNc)
 }
 
 kotlin {
     androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "1.8"
-            }
+        @OptIn(ExperimentalKotlinGradlePluginApi::class)
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
         }
     }
     
@@ -26,8 +27,6 @@ kotlin {
             isStatic = true
         }
     }
-
-    val ktorVersion = "2.3.7"
     
     sourceSets {
 
@@ -36,17 +35,17 @@ kotlin {
         }
 
         commonMain.dependencies {
-            implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
-            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
-            implementation("io.ktor:ktor-client-core:$ktorVersion")
-            implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
-            implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+            implementation(libs.kotlinx.datetime)
+            implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.client.content.negotiation)
+            implementation(libs.ktor.serialization.kotlinx.json)
         }
         androidMain.dependencies {
-            implementation("io.ktor:ktor-client-android:$ktorVersion")
+            implementation(libs.ktor.client.android)
         }
         iosMain.dependencies {
-            implementation("io.ktor:ktor-client-darwin:$ktorVersion")
+            implementation(libs.ktor.client.darwin)
         }
     }
 }
@@ -57,4 +56,9 @@ android {
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
     }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+
 }
