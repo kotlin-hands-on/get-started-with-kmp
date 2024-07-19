@@ -28,6 +28,9 @@ kotlin {
     }
     
     sourceSets {
+        all {
+            languageSettings.optIn("kotlin.experimental.ExperimentalObjCName")
+        }
 
         commonMain.dependencies {
             implementation(libs.kotlinx.datetime)
