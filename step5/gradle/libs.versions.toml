@@ -20,7 +20,7 @@ kotlinxDatetime = "0.6.0"
 ktorVersion = "2.3.7"
 lifecycleViewmodelCompose = "2.8.2"
 ksp="2.0.0-1.0.21"
-kmpNc="1.0.0-ALPHA-31"
+kmpNativeCoroutines="1.0.0-ALPHA-31"
 
 [libraries]
 androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycleViewmodelCompose" }
@@ -57,4 +57,4 @@ kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref =
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-kmpNc = { id = "com.rickclephas.kmp.nativecoroutines", version.ref = "kmpNc" }
+kmpNativeCoroutines = { id = "com.rickclephas.kmp.nativecoroutines", version.ref = "kmpNativeCoroutines" }
