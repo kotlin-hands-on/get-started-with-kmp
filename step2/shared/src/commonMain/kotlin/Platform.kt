@@ -3,5 +3,3 @@ interface Platform {
 }
 
 expect fun getPlatform(): Platform
-
-expect val num: Int

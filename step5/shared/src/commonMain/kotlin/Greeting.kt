@@ -4,9 +4,10 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlin.time.Duration.Companion.seconds
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
+
 class Greeting {
-    private val rocketComponent = RocketComponent()
     private val platform: Platform = getPlatform()
+    private val rocketComponent = RocketComponent()
 
     @NativeCoroutines
     fun greet(): Flow<String> = flow {
@@ -18,4 +19,3 @@ class Greeting {
         emit(rocketComponent.launchPhrase())
     }
 }
-

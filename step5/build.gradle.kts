@@ -5,6 +5,6 @@ plugins {
     alias(libs.plugins.androidLibrary) apply false
     alias(libs.plugins.jetbrainsCompose) apply false
     alias(libs.plugins.kotlinMultiplatform) apply false
-    id("com.google.devtools.ksp").version("1.9.21-1.0.16").apply(false)
-    id("com.rickclephas.kmp.nativecoroutines").version("1.0.0-ALPHA-23").apply(false)
+    id("com.google.devtools.ksp").version("1.9.22-1.0.17").apply(false)
+    id("com.rickclephas.kmp.nativecoroutines").version("1.0.0-ALPHA-25").apply(false)
 }

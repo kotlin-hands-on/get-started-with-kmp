@@ -2,15 +2,15 @@
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
-    kotlin("plugin.serialization") version "1.9.22"
-    id("co.touchlab.skie") version "0.6.1"
+    kotlin("plugin.serialization") version "1.9.23"
+    id("co.touchlab.skie") version "0.6.2"
 }
 
 kotlin {
     androidTarget {
         compilations.all {
             kotlinOptions {
-                jvmTarget = "1.8"
+                jvmTarget = "11"
             }
         }
     }
@@ -29,6 +29,9 @@ kotlin {
     val ktorVersion = "2.3.7"
     
     sourceSets {
+        all {
+            languageSettings.optIn("kotlin.experimental.ExperimentalObjCName")
+        }
 
         commonMain.dependencies {
             implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
@@ -49,6 +52,10 @@ kotlin {
 android {
     namespace = "com.jetbrains.greeting.shared"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
     }

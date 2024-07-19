@@ -5,8 +5,8 @@ import kotlinx.coroutines.flow.flow
 import kotlin.time.Duration.Companion.seconds
 
 class Greeting {
-    private val rocketComponent = RocketComponent()
     private val platform: Platform = getPlatform()
+    private val rocketComponent = RocketComponent()
 
     fun greet(): Flow<String> = flow {
         emit(if (Random.nextBoolean()) "Hi!" else "Hello!")
@@ -17,4 +17,3 @@ class Greeting {
         emit(rocketComponent.launchPhrase())
     }
 }
-

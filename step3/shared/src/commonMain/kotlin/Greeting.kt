@@ -1,7 +1,7 @@
 import kotlin.random.Random
 
 class Greeting {
-    private val platform = getPlatform()
+    private val platform: Platform = getPlatform()
 
     fun greet(): List<String> = buildList {
         add(if (Random.nextBoolean()) "Hi!" else "Hello!")

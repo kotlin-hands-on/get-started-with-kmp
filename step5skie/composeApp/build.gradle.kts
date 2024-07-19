@@ -1,4 +1,3 @@
-import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
 plugins {
@@ -11,7 +10,7 @@ kotlin {
     androidTarget {
         compilations.all {
             kotlinOptions {
-                jvmTarget = "1.8"
+                jvmTarget = "11"
             }
         }
     }
@@ -23,15 +22,15 @@ kotlin {
             implementation(libs.androidx.activity.compose)
             implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
             implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.2")
-            implementation(libs.androidx.lifecycle.viewmodel.compose)
+            implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
         }
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material)
             implementation(compose.ui)
-            @OptIn(ExperimentalComposeLibrary::class)
             implementation(compose.components.resources)
+            implementation(compose.components.uiToolingPreview)
             implementation(projects.shared)
         }
     }
@@ -63,10 +62,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     dependencies {
         debugImplementation(libs.compose.ui.tooling)
     }
 }
+
