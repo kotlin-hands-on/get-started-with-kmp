@@ -19,8 +19,8 @@ kotlinxCoroutinesCore = "1.8.1"
 kotlinxDatetime = "0.6.0"
 ktorVersion = "2.3.7"
 lifecycleViewmodelCompose = "2.8.2"
-ksp="2.0.0-1.0.21"
-kmpNativeCoroutines="1.0.0-ALPHA-31"
+ksp="2.0.0-1.0.24"
+kmpNativeCoroutines="1.0.0-ALPHA-33"
 
 [libraries]
 androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycleViewmodelCompose" }
