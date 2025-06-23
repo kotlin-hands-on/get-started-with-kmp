@@ -1,7 +1,5 @@
 import SwiftUI
 import Shared
-import KMPNativeCoroutinesAsync
-import KMPNativeCoroutinesCore
 
 struct ContentView: View {
     @ObservedObject private(set) var viewModel: ViewModel
@@ -15,16 +13,11 @@ struct ContentView: View {
 extension ContentView {
     @MainActor
     class ViewModel: ObservableObject {
-        @Published var greetings: Array<String> = []
+        @Published var greetings: [String] = []
 
         func startObserving() async {
-            do {
-                let sequence = asyncSequence(for: Greeting().greet())
-                for try await phrase in sequence {
-                    self.greetings.append(phrase)
-                }
-            } catch {
-                print("Failed with error: \(error)")
+            for await phrase in Greeting().greet() {
+                self.greetings.append(phrase)
             }
         }
     }
