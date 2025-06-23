@@ -1,6 +1,5 @@
 package com.jetbrains.greeting.greetingkmp
 
-import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -12,7 +11,6 @@ class Greeting {
 
     private val rocketComponent = RocketComponent()
 
-    @NativeCoroutines
     fun greet(): Flow<String> = flow {
         emit(if (Random.nextBoolean()) "Hi!" else "Hello!")
         delay(1.seconds)
