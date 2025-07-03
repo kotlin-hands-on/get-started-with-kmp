@@ -1,0 +1,7 @@
+TEAM_ID=
+
+PRODUCT_NAME=greetingkmp
+PRODUCT_BUNDLE_IDENTIFIER=com.jetbrains.greeting.greetingkmp.greetingkmp$(TEAM_ID)
+
+CURRENT_PROJECT_VERSION=1
+MARKETING_VERSION=1.0
