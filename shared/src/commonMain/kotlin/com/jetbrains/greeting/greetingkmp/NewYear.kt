@@ -1,6 +1,7 @@
 package com.jetbrains.greeting.greetingkmp
 
 import kotlinx.datetime.*
+import kotlin.time.Clock
 
 fun daysUntilNewYear(): Int {
     val today = Clock.System.todayIn(TimeZone.currentSystemDefault())
