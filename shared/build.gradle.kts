@@ -4,7 +4,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
-    kotlin("plugin.serialization") version "2.1.21"
+    kotlin("plugin.serialization") version "2.2.0"
     id("com.google.devtools.ksp")
     id("com.rickclephas.kmp.nativecoroutines")
 }
@@ -28,7 +28,7 @@ kotlin {
         }
     }
 
-    val ktorVersion = "3.1.3"
+    val ktorVersion = "3.2.0"
 
     sourceSets {
         all {
