@@ -32,10 +32,13 @@ kotlin {
 
     sourceSets {
         all {
-            languageSettings.optIn("kotlin.experimental.ExperimentalObjCName")
+            languageSettings {
+                optIn("kotlin.experimental.ExperimentalObjCName")
+                optIn("kotlin.time.ExperimentalTime")
+            }
         }
         commonMain.dependencies {
-            implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.2")
+            implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.7.1")
             implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
             implementation("io.ktor:ktor-client-core:${ktorVersion}")
             implementation("io.ktor:ktor-client-content-negotiation:${ktorVersion}")
