@@ -1,5 +1,5 @@
 import SwiftUI
-import Shared
+import SharedLogic
 import KMPNativeCoroutinesAsync
 import KMPNativeCoroutinesCore
 
