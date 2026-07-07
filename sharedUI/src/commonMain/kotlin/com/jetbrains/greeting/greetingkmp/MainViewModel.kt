@@ -8,13 +8,13 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class MainViewModel : ViewModel() {
-    private val _greetingList = MutableStateFlow<List<String>>(listOf())
-    val greetingList: StateFlow<List<String>> get() = _greetingList
+    val greetingList: StateFlow<List<String>>
+        field = MutableStateFlow<List<String>>(listOf())
 
     init {
         viewModelScope.launch {
             Greeting().greet().collect { phrase ->
-                _greetingList.update { list -> list + phrase }
+                greetingList.update { list -> list + phrase }
             }
         }
     }
