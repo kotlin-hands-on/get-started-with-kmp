@@ -15,7 +15,7 @@ struct ContentView: View {
 extension ContentView {
     @MainActor
     class ViewModel: ObservableObject {
-        @Published var greetings: Array<String> = []
+        @Published var greetings: [String] = []
 
         func startObserving() async {
             do {
