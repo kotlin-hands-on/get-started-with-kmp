@@ -1,9 +1,9 @@
-package com.jetbrains.greeting.greetingkmp
+package com.jetbrains.greetingkmp
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class SharedLogicIOSTest {
+class SharedUICommonTest {
 
     @Test
     fun example() {
