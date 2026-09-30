@@ -1,5 +1,4 @@
-rootProject.name = "greetingkmp"
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+rootProject.name = "GreetingKMP"
 
 pluginManagement {
     repositories {
@@ -28,5 +27,6 @@ dependencyResolutionManagement {
     }
 }
 
-include(":composeApp")
-include(":shared")
+include(":androidApp")
+include(":sharedLogic")
+include(":sharedUI")
