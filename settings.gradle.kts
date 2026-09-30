@@ -1,5 +1,4 @@
-rootProject.name = "greetingkmp"
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+rootProject.name = "GreetingKMP"
 
 pluginManagement {
     repositories {

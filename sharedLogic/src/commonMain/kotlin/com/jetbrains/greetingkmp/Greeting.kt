@@ -1,4 +1,4 @@
-package com.jetbrains.greeting.greetingkmp
+package com.jetbrains.greetingkmp
 
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
 import kotlinx.coroutines.delay
@@ -8,16 +8,16 @@ import kotlin.random.Random
 import kotlin.time.Duration.Companion.seconds
 
 class Greeting {
-    private val platform: Platform = getPlatform()
+    private val platform = getPlatform()
+   
+    // Stores the last successful launch date
     private val rocketComponent = RocketComponent()
-
+    // Builds and asynchronously emits greeting strings one by one
     @NativeCoroutines
     fun greet(): Flow<String> = flow {
         emit(if (Random.nextBoolean()) "Hi!" else "Hello!")
         delay(1.seconds)
         emit("Guess what this is! > ${platform.name.reversed()}")
-        delay(1.seconds)
-        emit(daysPhrase())
         emit(rocketComponent.launchPhrase())
     }
 }

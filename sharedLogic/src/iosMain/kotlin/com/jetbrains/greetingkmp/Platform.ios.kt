@@ -1,8 +1,8 @@
-package com.jetbrains.greeting.greetingkmp
+package com.jetbrains.greetingkmp
 
 import platform.UIKit.UIDevice
 
-class IOSPlatform : Platform {
+class IOSPlatform: Platform {
     override val name: String = UIDevice.currentDevice.systemName() + " " + UIDevice.currentDevice.systemVersion
 }
 

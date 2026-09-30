@@ -1,4 +1,4 @@
-package com.jetbrains.greeting.greetingkmp
+package com.jetbrains.greetingkmp
 
 interface Platform {
     val name: String
